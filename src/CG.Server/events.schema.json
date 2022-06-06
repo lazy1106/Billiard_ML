@@ -1,0 +1,1352 @@
+{
+	"action": {
+		"ShowAuthPanel": {
+			"project": "Server",
+			"source": {
+				"path": "events/actions",
+				"filename": "ShowAuthPanel.action.ts"
+			},
+			"tostring": {},
+			"className": "ShowAuthPanelAction",
+			"timestamp": 1632344550825,
+			"label": {
+				"en": "Show Auth Panel",
+				"zh": "顯示登入面板"
+			},
+			"description": {
+				"en": "Players can edit personal info on Auth Panel, as well as logout from game.",
+				"zh": "登入面板供玩家修改暱稱、圖示等個人資訊，及登出選項。"
+			},
+			"allpaths": {
+				"en": [
+					[
+						"Server",
+						"Login"
+					]
+				],
+				"zh": [
+					[
+						"伺服器",
+						"登入"
+					]
+				]
+			},
+			"properties": [
+				{
+					"key": "disabled",
+					"type": "boolean",
+					"label": {
+						"en": "Disable",
+						"zh": "停用"
+					},
+					"default": {
+						"en": "false"
+					}
+				}
+			]
+		},
+		"HideAuthPanel": {
+			"project": "Server",
+			"source": {
+				"path": "events/actions",
+				"filename": "HideAuthPanel.action.ts"
+			},
+			"tostring": {},
+			"className": "HideAuthPanelAction",
+			"timestamp": 1632344550825,
+			"label": {
+				"en": "Hide Auth Panel",
+				"zh": "隱藏登入面板"
+			},
+			"description": {},
+			"allpaths": {
+				"en": [
+					[
+						"Server",
+						"Login"
+					]
+				],
+				"zh": [
+					[
+						"伺服器",
+						"登入"
+					]
+				]
+			},
+			"properties": [
+				{
+					"key": "disabled",
+					"type": "boolean",
+					"label": {
+						"en": "Disable",
+						"zh": "停用"
+					},
+					"default": {
+						"en": "false"
+					}
+				}
+			]
+		},
+		"SubmitScore": {
+			"project": "Server",
+			"source": {
+				"path": "events/actions",
+				"filename": "SubmitScore.action.ts"
+			},
+			"tostring": {},
+			"className": "SubmitScoreAction",
+			"timestamp": 1632344550825,
+			"label": {
+				"en": "Submit Score",
+				"zh": "上傳玩家分數"
+			},
+			"description": {
+				"en": "Submit score of a player, and optionally display highscores.",
+				"zh": "上傳玩家分數，並可選擇是否顯示高分排行榜的按鈕。"
+			},
+			"allpaths": {
+				"en": [
+					[
+						"Server",
+						"Scores"
+					]
+				],
+				"zh": [
+					[
+						"伺服器",
+						"分數"
+					]
+				]
+			},
+			"properties": [
+				{
+					"key": "playerId",
+					"type": "string",
+					"label": {
+						"en": "ID of the submit score player",
+						"zh": "上傳分數的玩家ID"
+					},
+					"required": 1
+				},
+				{
+					"key": "scoreKey",
+					"type": "string",
+					"label": {
+						"en": "Score Key",
+						"zh": "分數代碼"
+					},
+					"required": 1
+				},
+				{
+					"key": "score",
+					"type": "number",
+					"format": "string",
+					"label": {
+						"en": "Score of the player",
+						"zh": "玩家的分數"
+					},
+					"required": 1
+				},
+				{
+					"key": "submitType",
+					"type": "number",
+					"label": {
+						"en": "Submit Method",
+						"zh": "上傳分數的計算方式"
+					},
+					"required": 1,
+					"enum": [
+						1,
+						2,
+						3,
+						4,
+						5
+					],
+					"enumTitles": {
+						"en": [
+							"Keep Highest",
+							"Keep Lowest",
+							"Add",
+							"Overwrite"
+						],
+						"zh": [
+							"最高分",
+							"最低分",
+							"累加",
+							"覆寫"
+						]
+					}
+				},
+				{
+					"key": "showDialog",
+					"type": "boolean",
+					"label": {
+						"en": "Show Dialog",
+						"zh": "顯示對話框"
+					},
+					"default": {
+						"en": "true"
+					}
+				},
+				{
+					"key": "title",
+					"type": "string",
+					"label": {
+						"en": "Dialog Title",
+						"zh": "對話框標題"
+					},
+					"visible": "{showDialog}",
+					"indent": 2
+				},
+				{
+					"key": "message",
+					"type": "string",
+					"label": {
+						"en": "Dialog Message",
+						"zh": "對話框訊息文字"
+					},
+					"description": {
+						"en": "The message text to show players the scores they get. Leave empty to display default message.",
+						"zh": "顯示玩家得到的分數。此處留白以取用預設訊息文字。"
+					},
+					"visible": "{showDialog}",
+					"indent": 2
+				},
+				{
+					"key": "confirmLabel",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "The label of the confirm button",
+						"zh": "確認按鈕文字"
+					},
+					"default": {
+						"en": "Great!",
+						"zh": "太棒了!"
+					},
+					"visible": "{showDialog}",
+					"indent": 2
+				},
+				{
+					"key": "orderType",
+					"type": "number",
+					"label": {
+						"en": "Highscore Board Order Type",
+						"zh": "排行榜排序方式"
+					},
+					"default": {
+						"en": "2"
+					},
+					"required": 1,
+					"indent": 2,
+					"enum": [
+						1,
+						2,
+						3,
+						4
+					],
+					"enumTitles": {
+						"en": [
+							"Low to High",
+							"High to Low",
+							"Old to New",
+							"New to Old"
+						],
+						"zh": [
+							"低分排前面",
+							"高分排前面",
+							"先得分的排前面",
+							"最新得分排前面"
+						]
+					}
+				},
+				{
+					"key": "dialogId",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "ID of the dialog instance",
+						"zh": "彈出視窗的ID"
+					},
+					"propertyOrder": 0
+				}
+			]
+		},
+		"AwardBadge": {
+			"project": "Server",
+			"source": {
+				"path": "events/actions",
+				"filename": "AwardBadge.action.ts"
+			},
+			"tostring": {},
+			"className": "AwardBadgeAction",
+			"timestamp": 1632344550825,
+			"label": {
+				"en": "Award Badge",
+				"zh": "頒發勳章"
+			},
+			"description": {
+				"en": "Award user a badge.",
+				"zh": "頒發玩家一枚勳章。"
+			},
+			"allpaths": {
+				"en": [
+					[
+						"Server",
+						"Badge"
+					]
+				],
+				"zh": [
+					[
+						"伺服器",
+						"勳章"
+					]
+				]
+			},
+			"properties": [
+				{
+					"key": "playerId",
+					"type": "string",
+					"label": {
+						"en": "ID of the player",
+						"zh": "接受勳章的玩家ID"
+					},
+					"default": {
+						"en": "*"
+					},
+					"description": {
+						"en": "If set to *, all players will be awarded.",
+						"zh": "若設定為 *, 則所有玩家都會被頒發勳章。"
+					},
+					"required": 1
+				},
+				{
+					"key": "badgeCode",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "Badge Code",
+						"zh": "勳章代碼"
+					},
+					"required": 1,
+					"suggest": [
+						"server<badgeCode>"
+					]
+				},
+				{
+					"key": "soundAlias",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "Resource Alias of the sound effect",
+						"zh": "播放音效的資源代理名字"
+					},
+					"description": {
+						"en": "The sound will play when the dialog opens.",
+						"zh": "在勳章對話框出現時使用這個資源播放音效。"
+					},
+					"suggest": [
+						"resources<sound>"
+					]
+				},
+				{
+					"key": "delayDialog",
+					"type": "number",
+					"format": "string",
+					"label": {
+						"en": "Delay Dialog",
+						"zh": "延遲對話框"
+					},
+					"unit": {
+						"en": "millisecond",
+						"zh": "毫秒"
+					},
+					"default": {
+						"en": "0"
+					}
+				},
+				{
+					"key": "dialogId",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "ID of the dialog instance",
+						"zh": "彈出視窗的ID"
+					},
+					"propertyOrder": 0
+				}
+			]
+		},
+		"ShowHighscoresBoard": {
+			"project": "Server",
+			"source": {
+				"path": "events/actions",
+				"filename": "ShowHighscoresBoard.action.ts"
+			},
+			"tostring": {},
+			"className": "ShowHighscoresBoardAction",
+			"timestamp": 1632344550825,
+			"label": {
+				"en": "Show Highscores Board",
+				"zh": "顯示高分排行榜"
+			},
+			"description": {
+				"en": "Show a highscores board of a specific score key.",
+				"zh": "顯示一個分數代碼的高分排行榜。"
+			},
+			"allpaths": {
+				"en": [
+					[
+						"Server",
+						"Scores"
+					]
+				],
+				"zh": [
+					[
+						"伺服器",
+						"分數"
+					]
+				]
+			},
+			"properties": [
+				{
+					"key": "scoreKey",
+					"type": "string",
+					"label": {
+						"en": "Score Key",
+						"zh": "分數代碼"
+					},
+					"required": 1
+				},
+				{
+					"key": "orderType",
+					"type": "number",
+					"label": {
+						"en": "Order Type",
+						"zh": "排序方式"
+					},
+					"default": {
+						"en": "2"
+					},
+					"required": 1,
+					"enum": [
+						1,
+						2,
+						3,
+						4
+					],
+					"enumTitles": {
+						"en": [
+							"Low to High",
+							"High to Low",
+							"Old to New",
+							"New to Old"
+						],
+						"zh": [
+							"低分排前面",
+							"高分排前面",
+							"先得分的排前面",
+							"最新得分排前面"
+						]
+					}
+				},
+				{
+					"key": "dialogId",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "ID of the dialog instance",
+						"zh": "彈出視窗的ID"
+					},
+					"propertyOrder": 0
+				}
+			]
+		},
+		"ShowBadgeList": {
+			"project": "Server",
+			"source": {
+				"path": "events/actions",
+				"filename": "ShowBadgeList.action.ts"
+			},
+			"tostring": {},
+			"className": "ShowBadgeListAction",
+			"timestamp": 1632344550825,
+			"label": {
+				"en": "Show User Badges",
+				"zh": "顯示玩家勳章"
+			},
+			"description": {
+				"en": "Show a dialog that lists the awarded badges of a user.",
+				"zh": "顯示一個對話框，列出一位玩家獲得的勳章列表。"
+			},
+			"allpaths": {
+				"en": [
+					[
+						"Server",
+						"Badge"
+					]
+				],
+				"zh": [
+					[
+						"伺服器",
+						"勳章"
+					]
+				]
+			},
+			"properties": [
+				{
+					"key": "username",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "username",
+						"zh": "玩家帳號"
+					},
+					"default": {
+						"en": "{me.username}"
+					}
+				},
+				{
+					"key": "dialogId",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "ID of the dialog instance",
+						"zh": "彈出視窗的ID"
+					},
+					"propertyOrder": 0
+				}
+			]
+		},
+		"ShowItemStore": {
+			"project": "Server",
+			"source": {
+				"path": "events/actions",
+				"filename": "ShowItemStore.action.ts"
+			},
+			"tostring": {},
+			"className": "ShowItemStoreAction",
+			"timestamp": 1632344550825,
+			"label": {
+				"en": "Show Item Store",
+				"zh": "顯示遊戲商店"
+			},
+			"description": {
+				"en": "Show Item Store that allow players to purchase game items.",
+				"zh": "顯示遊戲商店，玩家可以在商店中購買遊戲道具。"
+			},
+			"allpaths": {
+				"en": [
+					[
+						"Server",
+						"Items"
+					]
+				],
+				"zh": [
+					[
+						"伺服器",
+						"道具"
+					]
+				]
+			},
+			"properties": [
+				{
+					"key": "dialogId",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "ID of the dialog instance",
+						"zh": "彈出視窗的ID"
+					},
+					"propertyOrder": 0
+				}
+			]
+		},
+		"ShowBackpack": {
+			"project": "Server",
+			"source": {
+				"path": "events/actions",
+				"filename": "ShowBackpack.action.ts"
+			},
+			"tostring": {},
+			"className": "ShowBackpackAction",
+			"timestamp": 1632344550825,
+			"label": {
+				"en": "Show Backpack",
+				"zh": "顯示我的背包"
+			},
+			"description": {
+				"en": "Show a dialog that lists items that the player owns.",
+				"zh": "顯示玩家的背包，列出玩家擁有的道具。"
+			},
+			"allpaths": {
+				"en": [
+					[
+						"Server",
+						"Items"
+					]
+				],
+				"zh": [
+					[
+						"伺服器",
+						"道具"
+					]
+				]
+			},
+			"properties": [
+				{
+					"key": "dialogId",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "ID of the dialog instance",
+						"zh": "彈出視窗的ID"
+					},
+					"propertyOrder": 0
+				}
+			]
+		},
+		"AwardStoreItem": {
+			"project": "Server",
+			"source": {
+				"path": "events/actions",
+				"filename": "AwardStoreItem.action.ts"
+			},
+			"tostring": {},
+			"className": "AwardStoreItemAction",
+			"timestamp": 1632344550825,
+			"label": {
+				"en": "Award Store Item",
+				"zh": "獎勵商店道具"
+			},
+			"description": {
+				"en": "Send an store item to user.",
+				"zh": "贈送玩家商店道具。"
+			},
+			"allpaths": {
+				"en": [
+					[
+						"Server",
+						"Items"
+					]
+				],
+				"zh": [
+					[
+						"伺服器",
+						"道具"
+					]
+				]
+			},
+			"properties": [
+				{
+					"key": "playerId",
+					"type": "string",
+					"label": {
+						"en": "ID of the player",
+						"zh": "接受獎勵的玩家ID"
+					},
+					"default": {
+						"en": "*"
+					},
+					"description": {
+						"en": "If set to *, all players will be awarded.",
+						"zh": "若設定為 *, 則所有玩家都會被獎勵道具。"
+					},
+					"required": 1
+				},
+				{
+					"key": "itemWeights",
+					"type": "array",
+					"label": {
+						"en": "Item Code",
+						"zh": "道具代碼"
+					},
+					"default": {
+						"en": "[{}]"
+					},
+					"required": 1,
+					"arrayItem": "#ItemWeight"
+				},
+				{
+					"key": "title",
+					"type": "string",
+					"label": {
+						"en": "Item Title",
+						"zh": "道具標題"
+					},
+					"description": {
+						"en": "The title of the item. Leave empty to display default title.",
+						"zh": "顯示玩家得到的道具標題。此處留白以取用預設文字。"
+					}
+				},
+				{
+					"key": "soundAlias",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "Resource Alias of the sound effect",
+						"zh": "播放音效的資源代理名字"
+					},
+					"description": {
+						"en": "The sound will play when the dialog opens.",
+						"zh": "在道具對話框出現時使用這個資源播放音效。"
+					},
+					"suggest": [
+						"resources<sound>"
+					]
+				},
+				{
+					"key": "delayDialog",
+					"type": "number",
+					"format": "string",
+					"label": {
+						"en": "Delay Dialog",
+						"zh": "延遲對話框"
+					},
+					"unit": {
+						"en": "millisecond",
+						"zh": "毫秒"
+					},
+					"default": {
+						"en": "0"
+					}
+				},
+				{
+					"key": "dialogId",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "ID of the dialog instance",
+						"zh": "彈出視窗的ID"
+					},
+					"propertyOrder": 0
+				}
+			]
+		},
+		"SetUserState": {
+			"project": "Server",
+			"source": {
+				"path": "events/actions",
+				"filename": "SetUserState.action.ts"
+			},
+			"tostring": {},
+			"className": "SetUserStateAction",
+			"timestamp": 1632344550825,
+			"label": {
+				"en": "Set User State",
+				"zh": "儲存玩家狀態"
+			},
+			"description": {
+				"en": "Set a state of a user and save on server. This action can be used to save a game progress, user level, etc.\nUse \"Get User State\" to restore the user data from previous session.",
+				"zh": "儲存一個玩家狀態至伺服器。這個動作可以用來儲存玩家的遊戲進度、經驗值等。\n使用「取得玩家狀態」來載入玩家先前的記錄。"
+			},
+			"allpaths": {
+				"en": [
+					[
+						"Server",
+						"User State"
+					]
+				],
+				"zh": [
+					[
+						"伺服器",
+						"玩家狀態"
+					]
+				]
+			},
+			"properties": [
+				{
+					"key": "playerId",
+					"type": "string",
+					"label": {
+						"en": "ID of the player",
+						"zh": "玩家ID"
+					},
+					"required": 1
+				},
+				{
+					"key": "category",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "State Category",
+						"zh": "狀態類別"
+					},
+					"default": {
+						"en": "defaultUserCat"
+					},
+					"required": 1
+				},
+				{
+					"key": "key",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "State Key",
+						"zh": "狀態名稱"
+					},
+					"required": 1
+				},
+				{
+					"key": "valueType",
+					"type": "string",
+					"label": {
+						"en": "State Value Type",
+						"zh": "狀態值的型別"
+					},
+					"enum": [
+						"string",
+						"integer",
+						"number",
+						"boolean"
+					],
+					"enumTitles": {
+						"en": [
+							"string",
+							"integer",
+							"number",
+							"boolean"
+						],
+						"zh": [
+							"字串",
+							"整數",
+							"數字",
+							"布林值"
+						]
+					}
+				},
+				{
+					"key": "value",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "State Value",
+						"zh": "狀態值"
+					},
+					"description": {
+						"en": "Define the value to be stored in the state. The value needs to be able to be stringify as a json.",
+						"zh": "定義欲儲存的狀態的值。所設的值必須能被JSON.stringify字串化。"
+					}
+				},
+				{
+					"key": "disabled",
+					"type": "boolean",
+					"label": {
+						"en": "Disable",
+						"zh": "停用"
+					},
+					"default": {
+						"en": "false"
+					}
+				}
+			]
+		},
+		"GetUserState": {
+			"project": "Server",
+			"source": {
+				"path": "events/actions",
+				"filename": "GetUserState.action.ts"
+			},
+			"tostring": {},
+			"className": "GetUserStateAction",
+			"timestamp": 1632344550825,
+			"label": {
+				"en": "Get User State",
+				"zh": "取得玩家狀態"
+			},
+			"description": {
+				"en": "Get a state of a user that was saved previously on server.",
+				"zh": "載入玩家先前記錄的玩家狀態。"
+			},
+			"allpaths": {
+				"en": [
+					[
+						"Server",
+						"User State"
+					]
+				],
+				"zh": [
+					[
+						"伺服器",
+						"玩家狀態"
+					]
+				]
+			},
+			"properties": [
+				{
+					"key": "playerId",
+					"type": "string",
+					"label": {
+						"en": "ID of the player",
+						"zh": "玩家ID"
+					},
+					"required": 1
+				},
+				{
+					"key": "category",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "State Category",
+						"zh": "狀態類別"
+					},
+					"default": {
+						"en": "defaultUserCat"
+					},
+					"required": 1
+				},
+				{
+					"key": "key",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "State Key",
+						"zh": "狀態名稱"
+					},
+					"required": 1
+				},
+				{
+					"key": "varname",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "Global variable name to store the value",
+						"zh": "儲存狀態值的全域變數名稱"
+					},
+					"required": 1
+				},
+				{
+					"key": "disabled",
+					"type": "boolean",
+					"label": {
+						"en": "Disable",
+						"zh": "停用"
+					},
+					"default": {
+						"en": "false"
+					}
+				}
+			]
+		}
+	},
+	"check": {},
+	"trigger": {
+		"PlayerJoined": {
+			"project": "Server",
+			"source": {
+				"path": "events/triggers",
+				"filename": "PlayerJoined.trigger.ts"
+			},
+			"tostring": {},
+			"className": "PlayerJoinedTrigger",
+			"timestamp": 1632344550825,
+			"label": {
+				"en": "Player Joined",
+				"zh": "玩家加入遊戲房"
+			},
+			"description": {
+				"en": "Trigger when a player joined the game.",
+				"zh": "在新玩家加入遊戲房後觸發。"
+			},
+			"allpaths": {
+				"en": [
+					[
+						"Server",
+						"Realtime"
+					]
+				],
+				"zh": [
+					[
+						"伺服器",
+						"即時連線"
+					]
+				]
+			},
+			"properties": [
+				{
+					"key": "playerLocal",
+					"type": "string",
+					"label": {
+						"en": "Local variable to store the matched player",
+						"zh": "儲存玩家的區域變數"
+					},
+					"description": {
+						"en": "The player can be saved in the localVariable, and has the following attributes:\nid, username, name, iconUrl, guest",
+						"zh": "玩家資料可被暫存在區域變數，並有以上屬性:\nplayerId, username, name, iconUrl, guest"
+					}
+				},
+				{
+					"key": "delayTrigger",
+					"type": "boolean",
+					"label": {
+						"en": "Delay Trigger",
+						"zh": "延遲觸發"
+					},
+					"description": {
+						"en": "When trigger is about the happen, delay the trigger of checks and actions.",
+						"zh": "當觸發條件符合時，是否延後一段時間再進行觸發檢查和動作。"
+					}
+				},
+				{
+					"key": "delayTime",
+					"type": "number",
+					"label": {
+						"en": "Delay Time",
+						"zh": "延遲觸發時間"
+					},
+					"unit": {
+						"en": "millisecond",
+						"zh": "毫秒"
+					},
+					"default": {
+						"en": "1000"
+					},
+					"visible": "{delayTrigger}",
+					"indent": 1
+				},
+				{
+					"key": "disableAfterTriggered",
+					"type": "boolean",
+					"label": {
+						"en": "Disable after triggered",
+						"zh": "觸發後停用"
+					},
+					"description": {
+						"en": "If true, this TRIGGER will be disabled after this.trigger() is called.\nThis is useful when the TRIGGER is only meanningful for the first trigger, like detecting when another event is triggered, or detecting when a hero dies.",
+						"zh": "若為真，則這個觸發將在this.trigger()被呼叫後停用。\n這個設定在只有第一次觸發時有意義的觸發上特別有用，比如偵測其他事件被觸發的時候，或偵測遊戲中某角色死亡的時候。"
+					}
+				},
+				{
+					"key": "disabled",
+					"type": "boolean",
+					"label": {
+						"en": "Disable",
+						"zh": "停用"
+					},
+					"default": {
+						"en": "false"
+					}
+				}
+			]
+		},
+		"PlayerLeft": {
+			"project": "Server",
+			"source": {
+				"path": "events/triggers",
+				"filename": "PlayerLeft.trigger.ts"
+			},
+			"tostring": {},
+			"className": "PlayerLeftTrigger",
+			"timestamp": 1632344550825,
+			"label": {
+				"en": "Player Left",
+				"zh": "玩家離開遊戲房"
+			},
+			"description": {
+				"en": "Trigger when a player left the game.",
+				"zh": "在新玩家離開遊戲房後觸發。"
+			},
+			"allpaths": {
+				"en": [
+					[
+						"Server",
+						"Realtime"
+					]
+				],
+				"zh": [
+					[
+						"伺服器",
+						"即時連線"
+					]
+				]
+			},
+			"properties": [
+				{
+					"key": "playerId",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "ID of the player",
+						"zh": "玩家的ID"
+					},
+					"default": {
+						"en": "*"
+					},
+					"description": {
+						"en": "The ID of the player, use plain string or wrap regexp with /",
+						"zh": "玩家的ID, 使用純文字或在前後加上 / 使用正規表達式"
+					},
+					"suggest": [
+						"actions<playerId>"
+					]
+				},
+				{
+					"key": "playerIdLocal",
+					"type": "string",
+					"label": {
+						"en": "Local variable to store the matched playerID",
+						"zh": "儲存玩家ID的區域變數"
+					}
+				},
+				{
+					"key": "delayTrigger",
+					"type": "boolean",
+					"label": {
+						"en": "Delay Trigger",
+						"zh": "延遲觸發"
+					},
+					"description": {
+						"en": "When trigger is about the happen, delay the trigger of checks and actions.",
+						"zh": "當觸發條件符合時，是否延後一段時間再進行觸發檢查和動作。"
+					}
+				},
+				{
+					"key": "delayTime",
+					"type": "number",
+					"label": {
+						"en": "Delay Time",
+						"zh": "延遲觸發時間"
+					},
+					"unit": {
+						"en": "millisecond",
+						"zh": "毫秒"
+					},
+					"default": {
+						"en": "1000"
+					},
+					"visible": "{delayTrigger}",
+					"indent": 1
+				},
+				{
+					"key": "disableAfterTriggered",
+					"type": "boolean",
+					"label": {
+						"en": "Disable after triggered",
+						"zh": "觸發後停用"
+					},
+					"description": {
+						"en": "If true, this TRIGGER will be disabled after this.trigger() is called.\nThis is useful when the TRIGGER is only meanningful for the first trigger, like detecting when another event is triggered, or detecting when a hero dies.",
+						"zh": "若為真，則這個觸發將在this.trigger()被呼叫後停用。\n這個設定在只有第一次觸發時有意義的觸發上特別有用，比如偵測其他事件被觸發的時候，或偵測遊戲中某角色死亡的時候。"
+					}
+				},
+				{
+					"key": "disabled",
+					"type": "boolean",
+					"label": {
+						"en": "Disable",
+						"zh": "停用"
+					},
+					"default": {
+						"en": "false"
+					}
+				}
+			]
+		}
+	},
+	"definition": {
+		"ServerConfig": {
+			"project": "Server",
+			"source": {
+				"path": "events/definitions",
+				"filename": "ServerConfig.definition.ts"
+			},
+			"tostring": {},
+			"className": "ServerConfigDef",
+			"timestamp": 1632344550825,
+			"label": {
+				"en": "Server Config",
+				"zh": "伺服器設定"
+			},
+			"description": {},
+			"allpaths": {},
+			"properties": [
+				{
+					"key": "supportSignin",
+					"type": "boolean",
+					"label": {
+						"en": "Support Player Signin",
+						"zh": "支援玩家登入"
+					},
+					"default": {
+						"en": "true"
+					},
+					"propertyOrder": 1
+				},
+				{
+					"key": "mustLogin",
+					"type": "boolean",
+					"label": {
+						"en": "Player must login before game starts",
+						"zh": "玩家必須登入"
+					},
+					"visible": "{supportSignin} & not({supportMsgServer})",
+					"indent": 2,
+					"propertyOrder": 2
+				},
+				{
+					"key": "allowGuest",
+					"type": "boolean",
+					"label": {
+						"en": "Allow login as a guest",
+						"zh": "允許玩家以訪客身份登入"
+					},
+					"default": {
+						"en": "true"
+					},
+					"visible": "{supportSignin}",
+					"indent": 2,
+					"propertyOrder": 3
+				},
+				{
+					"key": "supportMsgServer",
+					"type": "boolean",
+					"label": {
+						"en": "Support Msg Connection",
+						"zh": "支援多人即時連線"
+					},
+					"visible": "{supportSignin}",
+					"indent": 2,
+					"propertyOrder": 4
+				},
+				{
+					"key": "gamezoneCode",
+					"type": "string",
+					"label": {
+						"en": "Gamezone Code",
+						"zh": "遊戲房分區代碼"
+					},
+					"default": {
+						"en": "game"
+					},
+					"description": {
+						"en": "Gamezone manages a group of gameroom, player can search and join gamerooms in a gamezone.\nUse different gamezone codes for different events sheet.",
+						"zh": "遊戲房分區管理同性質的遊戲房，玩家可依遊戲房分區代碼尋找相容的遊戲房進行遊戲。\n不同的事件表應該使用不同的遊戲房分區。"
+					},
+					"required": 1,
+					"visible": "{supportSignin} & {supportMsgServer}",
+					"indent": 4,
+					"propertyOrder": 10
+				},
+				{
+					"key": "roomType",
+					"type": "string",
+					"label": {
+						"en": "Gameroom Type",
+						"zh": "遊戲房型式"
+					},
+					"default": {
+						"en": "open"
+					},
+					"description": {
+						"en": "Open Gameroom: Players can join a gameroom anytime after a room is created.\nClose Gameroom: Players can join a gameroom only before game starts. A gameroom is locked once the game starts.",
+						"zh": "開放式遊戲房: 玩家可以隨時進出遊戲房\n閉鎖式遊戲房: 玩家只能在遊戲開始前組成遊戲房。一旦遊戲開始後，遊戲房就會鎖上不讓其他玩家進入。"
+					},
+					"visible": "{supportSignin} & {supportMsgServer}",
+					"indent": 4,
+					"propertyOrder": 11,
+					"enum": [
+						"open",
+						"close"
+					],
+					"enumTitles": {
+						"en": [
+							"Open",
+							"Close"
+						],
+						"zh": [
+							"開放式",
+							"閉鎖式"
+						]
+					}
+				},
+				{
+					"key": "roomSize",
+					"type": "number",
+					"label": {
+						"en": "Room Size",
+						"zh": "遊戲房大小"
+					},
+					"default": {
+						"en": "4"
+					},
+					"description": {
+						"en": "The maximum number of players that can play in a gameroom",
+						"zh": "一個遊戲房最多能容納的玩家數量"
+					},
+					"required": 1,
+					"visible": "{supportSignin} & {supportMsgServer}",
+					"indent": 4,
+					"propertyOrder": 12
+				}
+			],
+			"format": "grid",
+			"use": "config"
+		},
+		"ItemWeight": {
+			"project": "Server",
+			"source": {
+				"path": "events/definitions",
+				"filename": "ItemWeight.definition.ts"
+			},
+			"tostring": {},
+			"className": "ItemWeightDef",
+			"timestamp": 1632344550825,
+			"label": {
+				"en": ""
+			},
+			"description": {},
+			"allpaths": {},
+			"properties": [
+				{
+					"key": "itemCode",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "Item Code",
+						"zh": "道具代碼"
+					},
+					"required": 1,
+					"gridColumns": 8,
+					"suggest": [
+						"server<itemCode>"
+					]
+				},
+				{
+					"key": "count",
+					"type": "number",
+					"format": "string",
+					"label": {
+						"en": "Count",
+						"zh": "數量"
+					},
+					"default": {
+						"en": "1"
+					},
+					"description": {
+						"en": "The amount of the item. This action will do nothing if a negative or zero is given.",
+						"zh": "道具數量。若設為0或負值，則此動作不會執行。"
+					},
+					"gridColumns": 4
+				},
+				{
+					"key": "weight",
+					"type": "number",
+					"format": "string",
+					"label": {
+						"en": "Weight",
+						"zh": "比重"
+					},
+					"default": {
+						"en": "1"
+					},
+					"description": {
+						"en": "Higher weight, easier to be picked.",
+						"zh": "比重越高，被抽中的機率越高。"
+					},
+					"gridColumns": 12
+				}
+			],
+			"format": "grid"
+		}
+	}
+}

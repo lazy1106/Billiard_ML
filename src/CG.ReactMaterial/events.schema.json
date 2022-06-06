@@ -1,0 +1,2778 @@
+{
+	"action": {
+		"ShowConfirmDialog": {
+			"project": "ReactMaterial",
+			"source": {
+				"path": "actions",
+				"filename": "ShowConfirmDialog.action.ts"
+			},
+			"tostring": {},
+			"className": "ShowConfirmDialogAction",
+			"timestamp": 1625501704725,
+			"label": {
+				"en": "Show Confirm Dialog",
+				"zh": "彈出確認視窗"
+			},
+			"description": {
+				"en": "Pop up a confirm dialog.",
+				"zh": "彈出一個確認視窗。"
+			},
+			"allpaths": {
+				"en": [
+					[
+						"Dialog"
+					]
+				],
+				"zh": [
+					[
+						"彈出視窗"
+					]
+				]
+			},
+			"properties": [
+				{
+					"key": "dialogId",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "ID of the dialog instance",
+						"zh": "彈出視窗的ID"
+					},
+					"propertyOrder": 0
+				},
+				{
+					"key": "title",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "Title",
+						"zh": "標題"
+					}
+				},
+				{
+					"key": "message",
+					"type": "string",
+					"format": "textarea",
+					"label": {
+						"en": "Message",
+						"zh": "訊息內容"
+					}
+				},
+				{
+					"key": "messageType",
+					"type": "string",
+					"label": {
+						"en": "The format of the Message.",
+						"zh": "訊息內容的格式"
+					},
+					"enum": [
+						"text",
+						"html",
+						"markdown"
+					],
+					"enumTitles": {
+						"en": [
+							"Plain Text",
+							"HTML",
+							"Markdown"
+						],
+						"zh": [
+							"純文字",
+							"HTML",
+							"Markdown"
+						]
+					}
+				},
+				{
+					"key": "msgImage",
+					"type": "object",
+					"format": "grid",
+					"label": {
+						"en": "Message Image",
+						"zh": "訊息圖案"
+					}
+				},
+				{
+					"key": "msgImageAlias",
+					"type": "string",
+					"label": {
+						"en": "Image Alias",
+						"zh": "圖案資源"
+					},
+					"parent": "msgImage",
+					"enum": [
+						"",
+						"resources<image>"
+					]
+				},
+				{
+					"key": "msgImageSide",
+					"type": "string",
+					"label": {
+						"en": "Image Position",
+						"zh": "圖案位置"
+					},
+					"parent": "msgImage",
+					"enum": [
+						"left",
+						"right",
+						"top"
+					],
+					"enumTitles": {
+						"en": [
+							"Left",
+							"Right",
+							"Top"
+						],
+						"zh": [
+							"左邊",
+							"右邊",
+							"上面"
+						]
+					}
+				},
+				{
+					"key": "controls",
+					"type": "object",
+					"format": "grid",
+					"label": {
+						"en": "Control Bar",
+						"zh": "控制欄"
+					}
+				},
+				{
+					"key": "buttonIconSide",
+					"type": "string",
+					"label": {
+						"en": "The position of the button icon",
+						"zh": "按鈕圖示的位置"
+					},
+					"gridColumns": 3,
+					"parent": "controls",
+					"enum": [
+						"right",
+						"left"
+					],
+					"enumTitles": {
+						"en": [
+							"Right",
+							"Left"
+						],
+						"zh": [
+							"右邊",
+							"左邊"
+						]
+					}
+				},
+				{
+					"key": "conBottom",
+					"type": "number",
+					"label": {
+						"en": "Bottom Margin",
+						"zh": "底部留白高度"
+					},
+					"default": {
+						"en": "8"
+					},
+					"gridColumns": 6,
+					"parent": "controls"
+				},
+				{
+					"key": "conBottomUnit",
+					"type": "string",
+					"label": {
+						"en": "Unit",
+						"zh": "單位"
+					},
+					"default": {
+						"en": "px"
+					},
+					"gridColumns": 3,
+					"parent": "controls",
+					"enum": [
+						"px",
+						"%"
+					]
+				},
+				{
+					"key": "confirmValue",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "The string value sent of confirm event.",
+						"zh": "確認時的回傳字串"
+					},
+					"gridColumns": 4,
+					"parent": "controls"
+				},
+				{
+					"key": "confirmLabel",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "The label of the confirm button",
+						"zh": "確認按鈕文字"
+					},
+					"default": {
+						"en": "Confirm",
+						"zh": "確定"
+					},
+					"gridColumns": 4,
+					"parent": "controls"
+				},
+				{
+					"key": "confirmIcon",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "The icon of the confirm button",
+						"zh": "確認按鈕圖示"
+					},
+					"default": {
+						"en": "check"
+					},
+					"gridColumns": 4,
+					"parent": "controls"
+				},
+				{
+					"key": "hideCancelButton",
+					"type": "boolean",
+					"label": {
+						"en": "Hide cancel button",
+						"zh": "隱藏取消按鈕"
+					},
+					"gridColumns": 4,
+					"parent": "controls"
+				},
+				{
+					"key": "cancelLabel",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "The label of the cancel button",
+						"zh": "取消按鈕文字"
+					},
+					"default": {
+						"en": "Cancel",
+						"zh": "取消"
+					},
+					"gridColumns": 4,
+					"visible": "{hideCancelButton} == false",
+					"parent": "controls"
+				},
+				{
+					"key": "cancelIcon",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "The icon of the cancel button",
+						"zh": "取消按鈕圖示"
+					},
+					"default": {
+						"en": "close"
+					},
+					"gridColumns": 4,
+					"visible": "{hideCancelButton} == false",
+					"parent": "controls"
+				},
+				{
+					"key": "options",
+					"type": "object",
+					"format": "grid",
+					"label": {
+						"en": "Options",
+						"zh": "進階選項"
+					},
+					"collapsed": 1
+				},
+				{
+					"key": "maxWidth",
+					"type": "string",
+					"label": {
+						"en": "Maxinum Width of the dialog",
+						"zh": "視窗的最大寬度"
+					},
+					"gridColumns": 12,
+					"parent": "options",
+					"enum": [
+						"",
+						"xs",
+						"sm",
+						"md"
+					],
+					"enumTitles": {
+						"en": [
+							"Unset",
+							"XSmall",
+							"Small",
+							"Medium"
+						],
+						"zh": [
+							"不設定",
+							"極小",
+							"小",
+							"中"
+						]
+					}
+				},
+				{
+					"key": "closeButton",
+					"type": "boolean",
+					"label": {
+						"en": "Show the Close button on the top-right corner.",
+						"zh": "是否顯示右上角的關閉按鈕"
+					},
+					"gridColumns": 6,
+					"parent": "options"
+				},
+				{
+					"key": "fullWidth",
+					"type": "boolean",
+					"label": {
+						"en": "Stretches the dialog to maxWidth",
+						"zh": "將視窗展開至最大寬度"
+					},
+					"gridColumns": 6,
+					"parent": "options"
+				},
+				{
+					"key": "fullScreen",
+					"type": "boolean",
+					"label": {
+						"en": "Make this popup fullscreen.",
+						"zh": "調整為全畫面視窗"
+					},
+					"gridColumns": 6,
+					"parent": "options"
+				},
+				{
+					"key": "preventAccClose",
+					"type": "boolean",
+					"label": {
+						"en": "Prevent window closed by click outside or Esc key.",
+						"zh": "停用按視窗外區域或Esc按鈕關閉視窗的功能"
+					},
+					"gridColumns": 6,
+					"parent": "options"
+				},
+				{
+					"key": "backgroundImage",
+					"type": "string",
+					"label": {
+						"en": "Background Image",
+						"zh": "背景圖案"
+					},
+					"gridColumns": 6,
+					"parent": "options",
+					"enum": [
+						"",
+						"resources<image>"
+					]
+				},
+				{
+					"key": "backgroundRepeat",
+					"type": "string",
+					"label": {
+						"en": "Bg Repeat",
+						"zh": "背景重覆"
+					},
+					"default": {
+						"en": "cover"
+					},
+					"gridColumns": 6,
+					"visible": "{backgroundImage}",
+					"parent": "options",
+					"enum": [
+						"cover",
+						"round",
+						"space",
+						"no-repeat"
+					],
+					"enumTitles": {
+						"en": [
+							"Cover",
+							"Round",
+							"Space",
+							"No Repeat"
+						],
+						"zh": [
+							"覆蓋",
+							"重覆(伸縮)",
+							"重覆(間隔)",
+							"原尺寸"
+						]
+					}
+				},
+				{
+					"key": "transition",
+					"type": "object",
+					"format": "grid",
+					"label": {
+						"en": "Transition",
+						"zh": "進出動畫"
+					},
+					"gridColumns": 12,
+					"parent": "options"
+				},
+				{
+					"key": "tranClaz",
+					"type": "string",
+					"label": {
+						"en": "Animation",
+						"zh": "動畫"
+					},
+					"parent": "transition",
+					"enum": [
+						"slide",
+						"zoom",
+						"fade",
+						"grow"
+					],
+					"enumTitles": {
+						"en": [
+							"Slide",
+							"Zoom",
+							"Fade",
+							"Grow"
+						],
+						"zh": [
+							"滑動",
+							"縮放",
+							"淡入"
+						]
+					}
+				},
+				{
+					"key": "tranDuration",
+					"type": "number",
+					"format": "string",
+					"label": {
+						"en": "Animation",
+						"zh": "動畫"
+					},
+					"unit": {
+						"en": "millisecond",
+						"zh": "毫秒"
+					},
+					"default": {
+						"en": "250"
+					},
+					"parent": "transition"
+				},
+				{
+					"key": "tranDirection",
+					"type": "string",
+					"label": {
+						"en": "Direction",
+						"zh": "方向"
+					},
+					"default": {
+						"en": "up"
+					},
+					"visible": "\"{tranClaz}\" == \"slide\"",
+					"parent": "transition",
+					"enum": [
+						"up",
+						"down"
+					],
+					"enumTitles": {
+						"en": [
+							"UP",
+							"DOWN"
+						],
+						"zh": [
+							"往上",
+							"往下"
+						]
+					}
+				},
+				{
+					"key": "disabled",
+					"type": "boolean",
+					"label": {
+						"en": "Disable",
+						"zh": "停用"
+					},
+					"default": {
+						"en": "false"
+					}
+				}
+			]
+		},
+		"ShowInputDialog": {
+			"project": "ReactMaterial",
+			"source": {
+				"path": "actions",
+				"filename": "ShowInputDialog.action.ts"
+			},
+			"tostring": {},
+			"className": "ShowInputDialogAction",
+			"timestamp": 1625501704725,
+			"label": {
+				"en": "Show Input Dialog",
+				"zh": "彈出字串輸入視窗"
+			},
+			"description": {
+				"en": "Pop up an Input dialog to provide user input a string.",
+				"zh": "彈出一個可讓玩家輸入字串的視窗。"
+			},
+			"allpaths": {
+				"en": [
+					[
+						"Dialog"
+					]
+				],
+				"zh": [
+					[
+						"彈出視窗"
+					]
+				]
+			},
+			"properties": [
+				{
+					"key": "dialogId",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "ID of the dialog instance",
+						"zh": "彈出視窗的ID"
+					},
+					"propertyOrder": 0
+				},
+				{
+					"key": "title",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "Title",
+						"zh": "標題"
+					}
+				},
+				{
+					"key": "message",
+					"type": "string",
+					"format": "textarea",
+					"label": {
+						"en": "Message",
+						"zh": "訊息內容"
+					}
+				},
+				{
+					"key": "messageType",
+					"type": "string",
+					"label": {
+						"en": "The format of the Message.",
+						"zh": "訊息內容的格式"
+					},
+					"enum": [
+						"text",
+						"html",
+						"markdown"
+					],
+					"enumTitles": {
+						"en": [
+							"Plain Text",
+							"HTML",
+							"Markdown"
+						],
+						"zh": [
+							"純文字",
+							"HTML",
+							"Markdown"
+						]
+					}
+				},
+				{
+					"key": "msgImage",
+					"type": "object",
+					"format": "grid",
+					"label": {
+						"en": "Message Image",
+						"zh": "訊息圖案"
+					}
+				},
+				{
+					"key": "msgImageAlias",
+					"type": "string",
+					"label": {
+						"en": "Image Alias",
+						"zh": "圖案資源"
+					},
+					"parent": "msgImage",
+					"enum": [
+						"",
+						"resources<image>"
+					]
+				},
+				{
+					"key": "msgImageSide",
+					"type": "string",
+					"label": {
+						"en": "Image Position",
+						"zh": "圖案位置"
+					},
+					"parent": "msgImage",
+					"enum": [
+						"left",
+						"right",
+						"top"
+					],
+					"enumTitles": {
+						"en": [
+							"Left",
+							"Right",
+							"Top"
+						],
+						"zh": [
+							"左邊",
+							"右邊",
+							"上面"
+						]
+					}
+				},
+				{
+					"key": "controls",
+					"type": "object",
+					"format": "grid",
+					"label": {
+						"en": "Control Bar",
+						"zh": "控制欄"
+					}
+				},
+				{
+					"key": "buttonIconSide",
+					"type": "string",
+					"label": {
+						"en": "The position of the button icon",
+						"zh": "按鈕圖示的位置"
+					},
+					"gridColumns": 3,
+					"parent": "controls",
+					"enum": [
+						"right",
+						"left"
+					],
+					"enumTitles": {
+						"en": [
+							"Right",
+							"Left"
+						],
+						"zh": [
+							"右邊",
+							"左邊"
+						]
+					}
+				},
+				{
+					"key": "conBottom",
+					"type": "number",
+					"label": {
+						"en": "Bottom Margin",
+						"zh": "底部留白高度"
+					},
+					"default": {
+						"en": "8"
+					},
+					"gridColumns": 6,
+					"parent": "controls"
+				},
+				{
+					"key": "conBottomUnit",
+					"type": "string",
+					"label": {
+						"en": "Unit",
+						"zh": "單位"
+					},
+					"default": {
+						"en": "px"
+					},
+					"gridColumns": 3,
+					"parent": "controls",
+					"enum": [
+						"px",
+						"%"
+					]
+				},
+				{
+					"key": "confirmValue",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "The string value sent of confirm event.",
+						"zh": "確認時的回傳字串"
+					},
+					"gridColumns": 4,
+					"parent": "controls"
+				},
+				{
+					"key": "confirmLabel",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "The label of the confirm button",
+						"zh": "確認按鈕文字"
+					},
+					"default": {
+						"en": "Confirm",
+						"zh": "確定"
+					},
+					"gridColumns": 4,
+					"parent": "controls"
+				},
+				{
+					"key": "confirmIcon",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "The icon of the confirm button",
+						"zh": "確認按鈕圖示"
+					},
+					"default": {
+						"en": "check"
+					},
+					"gridColumns": 4,
+					"parent": "controls"
+				},
+				{
+					"key": "hideCancelButton",
+					"type": "boolean",
+					"label": {
+						"en": "Hide cancel button",
+						"zh": "隱藏取消按鈕"
+					},
+					"gridColumns": 4,
+					"parent": "controls"
+				},
+				{
+					"key": "cancelLabel",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "The label of the cancel button",
+						"zh": "取消按鈕文字"
+					},
+					"default": {
+						"en": "Cancel",
+						"zh": "取消"
+					},
+					"gridColumns": 4,
+					"visible": "{hideCancelButton} == false",
+					"parent": "controls"
+				},
+				{
+					"key": "cancelIcon",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "The icon of the cancel button",
+						"zh": "取消按鈕圖示"
+					},
+					"default": {
+						"en": "close"
+					},
+					"gridColumns": 4,
+					"visible": "{hideCancelButton} == false",
+					"parent": "controls"
+				},
+				{
+					"key": "options",
+					"type": "object",
+					"format": "grid",
+					"label": {
+						"en": "Options",
+						"zh": "進階選項"
+					},
+					"collapsed": 1
+				},
+				{
+					"key": "maxWidth",
+					"type": "string",
+					"label": {
+						"en": "Maxinum Width of the dialog",
+						"zh": "視窗的最大寬度"
+					},
+					"gridColumns": 12,
+					"parent": "options",
+					"enum": [
+						"",
+						"xs",
+						"sm",
+						"md"
+					],
+					"enumTitles": {
+						"en": [
+							"Unset",
+							"XSmall",
+							"Small",
+							"Medium"
+						],
+						"zh": [
+							"不設定",
+							"極小",
+							"小",
+							"中"
+						]
+					}
+				},
+				{
+					"key": "closeButton",
+					"type": "boolean",
+					"label": {
+						"en": "Show the Close button on the top-right corner.",
+						"zh": "是否顯示右上角的關閉按鈕"
+					},
+					"gridColumns": 6,
+					"parent": "options"
+				},
+				{
+					"key": "fullWidth",
+					"type": "boolean",
+					"label": {
+						"en": "Stretches the dialog to maxWidth",
+						"zh": "將視窗展開至最大寬度"
+					},
+					"gridColumns": 6,
+					"parent": "options"
+				},
+				{
+					"key": "fullScreen",
+					"type": "boolean",
+					"label": {
+						"en": "Make this popup fullscreen.",
+						"zh": "調整為全畫面視窗"
+					},
+					"gridColumns": 6,
+					"parent": "options"
+				},
+				{
+					"key": "preventAccClose",
+					"type": "boolean",
+					"label": {
+						"en": "Prevent window closed by click outside or Esc key.",
+						"zh": "停用按視窗外區域或Esc按鈕關閉視窗的功能"
+					},
+					"gridColumns": 6,
+					"parent": "options"
+				},
+				{
+					"key": "backgroundImage",
+					"type": "string",
+					"label": {
+						"en": "Background Image",
+						"zh": "背景圖案"
+					},
+					"gridColumns": 6,
+					"parent": "options",
+					"enum": [
+						"",
+						"resources<image>"
+					]
+				},
+				{
+					"key": "backgroundRepeat",
+					"type": "string",
+					"label": {
+						"en": "Bg Repeat",
+						"zh": "背景重覆"
+					},
+					"default": {
+						"en": "cover"
+					},
+					"gridColumns": 6,
+					"visible": "{backgroundImage}",
+					"parent": "options",
+					"enum": [
+						"cover",
+						"round",
+						"space",
+						"no-repeat"
+					],
+					"enumTitles": {
+						"en": [
+							"Cover",
+							"Round",
+							"Space",
+							"No Repeat"
+						],
+						"zh": [
+							"覆蓋",
+							"重覆(伸縮)",
+							"重覆(間隔)",
+							"原尺寸"
+						]
+					}
+				},
+				{
+					"key": "transition",
+					"type": "object",
+					"format": "grid",
+					"label": {
+						"en": "Transition",
+						"zh": "進出動畫"
+					},
+					"gridColumns": 12,
+					"parent": "options"
+				},
+				{
+					"key": "tranClaz",
+					"type": "string",
+					"label": {
+						"en": "Animation",
+						"zh": "動畫"
+					},
+					"parent": "transition",
+					"enum": [
+						"slide",
+						"zoom",
+						"fade",
+						"grow"
+					],
+					"enumTitles": {
+						"en": [
+							"Slide",
+							"Zoom",
+							"Fade",
+							"Grow"
+						],
+						"zh": [
+							"滑動",
+							"縮放",
+							"淡入"
+						]
+					}
+				},
+				{
+					"key": "tranDuration",
+					"type": "number",
+					"format": "string",
+					"label": {
+						"en": "Animation",
+						"zh": "動畫"
+					},
+					"unit": {
+						"en": "millisecond",
+						"zh": "毫秒"
+					},
+					"default": {
+						"en": "250"
+					},
+					"parent": "transition"
+				},
+				{
+					"key": "tranDirection",
+					"type": "string",
+					"label": {
+						"en": "Direction",
+						"zh": "方向"
+					},
+					"default": {
+						"en": "up"
+					},
+					"visible": "\"{tranClaz}\" == \"slide\"",
+					"parent": "transition",
+					"enum": [
+						"up",
+						"down"
+					],
+					"enumTitles": {
+						"en": [
+							"UP",
+							"DOWN"
+						],
+						"zh": [
+							"往上",
+							"往下"
+						]
+					}
+				},
+				{
+					"key": "confirmValue",
+					"type": "string",
+					"format": "string",
+					"gridColumns": 4,
+					"visible": "false",
+					"parent": "controls"
+				},
+				{
+					"key": "inputLabel",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "The label of the input box",
+						"zh": "輸入框的提示標題"
+					}
+				},
+				{
+					"key": "defaultValue",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "The init string value of the input box.",
+						"zh": "預設的輸入字串"
+					}
+				},
+				{
+					"key": "disabled",
+					"type": "boolean",
+					"label": {
+						"en": "Disable",
+						"zh": "停用"
+					},
+					"default": {
+						"en": "false"
+					}
+				}
+			]
+		},
+		"ShowLoadingDialog": {
+			"project": "ReactMaterial",
+			"source": {
+				"path": "actions",
+				"filename": "ShowLoadingDialog.action.ts"
+			},
+			"tostring": {},
+			"className": "ShowLoadingDialogAction",
+			"timestamp": 1625501704725,
+			"label": {
+				"en": "Show Loading Dialog",
+				"zh": "彈出載入中"
+			},
+			"description": {
+				"en": "Pop up a loading dialog.",
+				"zh": "彈出一個載入中的視窗。"
+			},
+			"allpaths": {
+				"en": [
+					[
+						"Dialog"
+					]
+				],
+				"zh": [
+					[
+						"彈出視窗"
+					]
+				]
+			},
+			"properties": [
+				{
+					"key": "dialogId",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "ID of the dialog instance",
+						"zh": "彈出視窗的ID"
+					},
+					"propertyOrder": 0
+				},
+				{
+					"key": "message",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "Message",
+						"zh": "訊息內容"
+					}
+				},
+				{
+					"key": "options",
+					"type": "object",
+					"format": "grid",
+					"label": {
+						"en": "Options",
+						"zh": "進階選項"
+					},
+					"collapsed": 1
+				},
+				{
+					"key": "circleColor",
+					"type": "string",
+					"format": "color",
+					"label": {
+						"en": "Circle Color",
+						"zh": "圓圈顏色"
+					},
+					"default": {
+						"en": "#00bfff"
+					},
+					"gridColumns": 6,
+					"parent": "options"
+				},
+				{
+					"key": "messageColor",
+					"type": "string",
+					"format": "color",
+					"label": {
+						"en": "Message Color",
+						"zh": "訊息顏色"
+					},
+					"default": {
+						"en": "#e0ffff"
+					},
+					"gridColumns": 6,
+					"parent": "options"
+				},
+				{
+					"key": "backgroundImage",
+					"type": "string",
+					"label": {
+						"en": "Background Image",
+						"zh": "背景圖案"
+					},
+					"gridColumns": 6,
+					"parent": "options",
+					"enum": [
+						"",
+						"resources<image>"
+					]
+				},
+				{
+					"key": "backgroundRepeat",
+					"type": "string",
+					"label": {
+						"en": "Bg Repeat",
+						"zh": "背景重覆"
+					},
+					"default": {
+						"en": "cover"
+					},
+					"gridColumns": 6,
+					"visible": "{backgroundImage}",
+					"parent": "options",
+					"enum": [
+						"cover",
+						"round",
+						"space",
+						"no-repeat"
+					],
+					"enumTitles": {
+						"en": [
+							"Cover",
+							"Round",
+							"Space",
+							"No Repeat"
+						],
+						"zh": [
+							"覆蓋",
+							"重覆(伸縮)",
+							"重覆(間隔)",
+							"原尺寸"
+						]
+					}
+				},
+				{
+					"key": "transition",
+					"type": "object",
+					"format": "grid",
+					"label": {
+						"en": "Transition",
+						"zh": "進出動畫"
+					},
+					"gridColumns": 12,
+					"parent": "options"
+				},
+				{
+					"key": "tranClaz",
+					"type": "string",
+					"label": {
+						"en": "Animation",
+						"zh": "動畫"
+					},
+					"default": {
+						"en": "fade"
+					},
+					"parent": "transition",
+					"enum": [
+						"slide",
+						"zoom",
+						"fade",
+						"grow"
+					],
+					"enumTitles": {
+						"en": [
+							"Slide",
+							"Zoom",
+							"Fade",
+							"Grow"
+						],
+						"zh": [
+							"滑動",
+							"縮放",
+							"淡入"
+						]
+					}
+				},
+				{
+					"key": "tranDuration",
+					"type": "number",
+					"format": "string",
+					"label": {
+						"en": "Animation",
+						"zh": "動畫"
+					},
+					"unit": {
+						"en": "millisecond",
+						"zh": "毫秒"
+					},
+					"default": {
+						"en": "250"
+					},
+					"parent": "transition"
+				},
+				{
+					"key": "tranDirection",
+					"type": "string",
+					"label": {
+						"en": "Direction",
+						"zh": "方向"
+					},
+					"default": {
+						"en": "up"
+					},
+					"visible": "\"{tranClaz}\" == \"slide\"",
+					"parent": "transition",
+					"enum": [
+						"up",
+						"down"
+					],
+					"enumTitles": {
+						"en": [
+							"UP",
+							"DOWN"
+						],
+						"zh": [
+							"往上",
+							"往下"
+						]
+					}
+				},
+				{
+					"key": "disabled",
+					"type": "boolean",
+					"label": {
+						"en": "Disable",
+						"zh": "停用"
+					},
+					"default": {
+						"en": "false"
+					}
+				}
+			]
+		},
+		"CloseDialog": {
+			"project": "ReactMaterial",
+			"source": {
+				"path": "actions",
+				"filename": "CloseDialog.action.ts"
+			},
+			"tostring": {},
+			"className": "CloseDialogAction",
+			"timestamp": 1625501704725,
+			"label": {
+				"en": "Close Dialog",
+				"zh": "關閉彈出視窗"
+			},
+			"description": {
+				"en": "Close a popup dialog.",
+				"zh": "關閉一個彈出視窗。"
+			},
+			"allpaths": {
+				"en": [
+					[
+						"Dialog"
+					]
+				],
+				"zh": [
+					[
+						"彈出視窗"
+					]
+				]
+			},
+			"properties": [
+				{
+					"key": "dialogId",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "ID of the dialog instance",
+						"zh": "彈出視窗的ID"
+					},
+					"suggest": [
+						"actions<dialogId>"
+					]
+				},
+				{
+					"key": "closeMehtod",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "Close Method",
+						"zh": "關閉方式"
+					},
+					"default": {
+						"en": "cancel"
+					},
+					"enum": [
+						"confirm",
+						"cancel"
+					],
+					"enumTitles": {
+						"en": [
+							"Confirm Button",
+							"Cancel Button"
+						],
+						"zh": [
+							"確認按鈕",
+							"取消按鈕"
+						]
+					}
+				},
+				{
+					"key": "disabled",
+					"type": "boolean",
+					"label": {
+						"en": "Disable",
+						"zh": "停用"
+					},
+					"default": {
+						"en": "false"
+					}
+				}
+			]
+		},
+		"ShowSelectDialog": {
+			"project": "ReactMaterial",
+			"source": {
+				"path": "actions",
+				"filename": "ShowSelectDialog.action.ts"
+			},
+			"tostring": {},
+			"className": "ShowSelectDialogAction",
+			"timestamp": 1625501704725,
+			"label": {
+				"en": "Show Select Dialog",
+				"zh": "彈出選項視窗"
+			},
+			"description": {
+				"en": "Pop up an dialog for user to select a value from a list of options",
+				"zh": "彈出一個可讓玩家從一串選項中選擇一項的視窗。"
+			},
+			"allpaths": {
+				"en": [
+					[
+						"Dialog"
+					]
+				],
+				"zh": [
+					[
+						"彈出視窗"
+					]
+				]
+			},
+			"properties": [
+				{
+					"key": "dialogId",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "ID of the dialog instance",
+						"zh": "彈出視窗的ID"
+					},
+					"propertyOrder": 0
+				},
+				{
+					"key": "title",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "Title",
+						"zh": "標題"
+					}
+				},
+				{
+					"key": "message",
+					"type": "string",
+					"format": "textarea",
+					"label": {
+						"en": "Message",
+						"zh": "訊息內容"
+					}
+				},
+				{
+					"key": "messageType",
+					"type": "string",
+					"label": {
+						"en": "The format of the Message.",
+						"zh": "訊息內容的格式"
+					},
+					"enum": [
+						"text",
+						"html",
+						"markdown"
+					],
+					"enumTitles": {
+						"en": [
+							"Plain Text",
+							"HTML",
+							"Markdown"
+						],
+						"zh": [
+							"純文字",
+							"HTML",
+							"Markdown"
+						]
+					}
+				},
+				{
+					"key": "msgImage",
+					"type": "object",
+					"format": "grid",
+					"label": {
+						"en": "Message Image",
+						"zh": "訊息圖案"
+					}
+				},
+				{
+					"key": "msgImageAlias",
+					"type": "string",
+					"label": {
+						"en": "Image Alias",
+						"zh": "圖案資源"
+					},
+					"parent": "msgImage",
+					"enum": [
+						"",
+						"resources<image>"
+					]
+				},
+				{
+					"key": "msgImageSide",
+					"type": "string",
+					"label": {
+						"en": "Image Position",
+						"zh": "圖案位置"
+					},
+					"parent": "msgImage",
+					"enum": [
+						"left",
+						"right",
+						"top"
+					],
+					"enumTitles": {
+						"en": [
+							"Left",
+							"Right",
+							"Top"
+						],
+						"zh": [
+							"左邊",
+							"右邊",
+							"上面"
+						]
+					}
+				},
+				{
+					"key": "controls",
+					"type": "object",
+					"format": "grid",
+					"label": {
+						"en": "Control Bar",
+						"zh": "控制欄"
+					}
+				},
+				{
+					"key": "buttonIconSide",
+					"type": "string",
+					"label": {
+						"en": "The position of the button icon",
+						"zh": "按鈕圖示的位置"
+					},
+					"gridColumns": 3,
+					"parent": "controls",
+					"enum": [
+						"right",
+						"left"
+					],
+					"enumTitles": {
+						"en": [
+							"Right",
+							"Left"
+						],
+						"zh": [
+							"右邊",
+							"左邊"
+						]
+					}
+				},
+				{
+					"key": "conBottom",
+					"type": "number",
+					"label": {
+						"en": "Bottom Margin",
+						"zh": "底部留白高度"
+					},
+					"default": {
+						"en": "8"
+					},
+					"gridColumns": 6,
+					"parent": "controls"
+				},
+				{
+					"key": "conBottomUnit",
+					"type": "string",
+					"label": {
+						"en": "Unit",
+						"zh": "單位"
+					},
+					"default": {
+						"en": "px"
+					},
+					"gridColumns": 3,
+					"parent": "controls",
+					"enum": [
+						"px",
+						"%"
+					]
+				},
+				{
+					"key": "confirmValue",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "The string value sent of confirm event.",
+						"zh": "確認時的回傳字串"
+					},
+					"gridColumns": 4,
+					"parent": "controls"
+				},
+				{
+					"key": "confirmLabel",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "The label of the confirm button",
+						"zh": "確認按鈕文字"
+					},
+					"default": {
+						"en": "Confirm",
+						"zh": "確定"
+					},
+					"gridColumns": 4,
+					"parent": "controls"
+				},
+				{
+					"key": "confirmIcon",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "The icon of the confirm button",
+						"zh": "確認按鈕圖示"
+					},
+					"default": {
+						"en": "check"
+					},
+					"gridColumns": 4,
+					"parent": "controls"
+				},
+				{
+					"key": "hideCancelButton",
+					"type": "boolean",
+					"label": {
+						"en": "Hide cancel button",
+						"zh": "隱藏取消按鈕"
+					},
+					"gridColumns": 4,
+					"parent": "controls"
+				},
+				{
+					"key": "cancelLabel",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "The label of the cancel button",
+						"zh": "取消按鈕文字"
+					},
+					"default": {
+						"en": "Cancel",
+						"zh": "取消"
+					},
+					"gridColumns": 4,
+					"visible": "{hideCancelButton} == false",
+					"parent": "controls"
+				},
+				{
+					"key": "cancelIcon",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "The icon of the cancel button",
+						"zh": "取消按鈕圖示"
+					},
+					"default": {
+						"en": "close"
+					},
+					"gridColumns": 4,
+					"visible": "{hideCancelButton} == false",
+					"parent": "controls"
+				},
+				{
+					"key": "options",
+					"type": "object",
+					"format": "grid",
+					"label": {
+						"en": "Options",
+						"zh": "進階選項"
+					},
+					"collapsed": 1
+				},
+				{
+					"key": "maxWidth",
+					"type": "string",
+					"label": {
+						"en": "Maxinum Width of the dialog",
+						"zh": "視窗的最大寬度"
+					},
+					"gridColumns": 12,
+					"parent": "options",
+					"enum": [
+						"",
+						"xs",
+						"sm",
+						"md"
+					],
+					"enumTitles": {
+						"en": [
+							"Unset",
+							"XSmall",
+							"Small",
+							"Medium"
+						],
+						"zh": [
+							"不設定",
+							"極小",
+							"小",
+							"中"
+						]
+					}
+				},
+				{
+					"key": "closeButton",
+					"type": "boolean",
+					"label": {
+						"en": "Show the Close button on the top-right corner.",
+						"zh": "是否顯示右上角的關閉按鈕"
+					},
+					"gridColumns": 6,
+					"parent": "options"
+				},
+				{
+					"key": "fullWidth",
+					"type": "boolean",
+					"label": {
+						"en": "Stretches the dialog to maxWidth",
+						"zh": "將視窗展開至最大寬度"
+					},
+					"gridColumns": 6,
+					"parent": "options"
+				},
+				{
+					"key": "fullScreen",
+					"type": "boolean",
+					"label": {
+						"en": "Make this popup fullscreen.",
+						"zh": "調整為全畫面視窗"
+					},
+					"gridColumns": 6,
+					"parent": "options"
+				},
+				{
+					"key": "preventAccClose",
+					"type": "boolean",
+					"label": {
+						"en": "Prevent window closed by click outside or Esc key.",
+						"zh": "停用按視窗外區域或Esc按鈕關閉視窗的功能"
+					},
+					"gridColumns": 6,
+					"parent": "options"
+				},
+				{
+					"key": "backgroundImage",
+					"type": "string",
+					"label": {
+						"en": "Background Image",
+						"zh": "背景圖案"
+					},
+					"gridColumns": 6,
+					"parent": "options",
+					"enum": [
+						"",
+						"resources<image>"
+					]
+				},
+				{
+					"key": "backgroundRepeat",
+					"type": "string",
+					"label": {
+						"en": "Bg Repeat",
+						"zh": "背景重覆"
+					},
+					"default": {
+						"en": "cover"
+					},
+					"gridColumns": 6,
+					"visible": "{backgroundImage}",
+					"parent": "options",
+					"enum": [
+						"cover",
+						"round",
+						"space",
+						"no-repeat"
+					],
+					"enumTitles": {
+						"en": [
+							"Cover",
+							"Round",
+							"Space",
+							"No Repeat"
+						],
+						"zh": [
+							"覆蓋",
+							"重覆(伸縮)",
+							"重覆(間隔)",
+							"原尺寸"
+						]
+					}
+				},
+				{
+					"key": "transition",
+					"type": "object",
+					"format": "grid",
+					"label": {
+						"en": "Transition",
+						"zh": "進出動畫"
+					},
+					"gridColumns": 12,
+					"parent": "options"
+				},
+				{
+					"key": "tranClaz",
+					"type": "string",
+					"label": {
+						"en": "Animation",
+						"zh": "動畫"
+					},
+					"parent": "transition",
+					"enum": [
+						"slide",
+						"zoom",
+						"fade",
+						"grow"
+					],
+					"enumTitles": {
+						"en": [
+							"Slide",
+							"Zoom",
+							"Fade",
+							"Grow"
+						],
+						"zh": [
+							"滑動",
+							"縮放",
+							"淡入"
+						]
+					}
+				},
+				{
+					"key": "tranDuration",
+					"type": "number",
+					"format": "string",
+					"label": {
+						"en": "Animation",
+						"zh": "動畫"
+					},
+					"unit": {
+						"en": "millisecond",
+						"zh": "毫秒"
+					},
+					"default": {
+						"en": "250"
+					},
+					"parent": "transition"
+				},
+				{
+					"key": "tranDirection",
+					"type": "string",
+					"label": {
+						"en": "Direction",
+						"zh": "方向"
+					},
+					"default": {
+						"en": "up"
+					},
+					"visible": "\"{tranClaz}\" == \"slide\"",
+					"parent": "transition",
+					"enum": [
+						"up",
+						"down"
+					],
+					"enumTitles": {
+						"en": [
+							"UP",
+							"DOWN"
+						],
+						"zh": [
+							"往上",
+							"往下"
+						]
+					}
+				},
+				{
+					"key": "confirmValue",
+					"type": "string",
+					"format": "string",
+					"gridColumns": 4,
+					"visible": "false",
+					"parent": "controls"
+				},
+				{
+					"key": "defaultValue",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "The initial selected value from the options.",
+						"zh": "預設的選項值"
+					}
+				},
+				{
+					"key": "selectOptions",
+					"type": "array",
+					"format": "table",
+					"label": {
+						"en": "Select Options",
+						"zh": "選項"
+					},
+					"arrayItem": "#SelectOption"
+				},
+				{
+					"key": "disabled",
+					"type": "boolean",
+					"label": {
+						"en": "Disable",
+						"zh": "停用"
+					},
+					"default": {
+						"en": "false"
+					}
+				}
+			]
+		},
+		"ShowCopyStringDialog": {
+			"project": "ReactMaterial",
+			"source": {
+				"path": "actions",
+				"filename": "ShowCopyStringDialog.action.ts"
+			},
+			"tostring": {},
+			"className": "ShowCopyStringDialogAction",
+			"timestamp": 1625501704725,
+			"label": {
+				"en": "Show Copy-string Dialog",
+				"zh": "彈出複製字串視窗"
+			},
+			"description": {
+				"en": "Pop up an dialog to show user a string and provide a button to copy to clipboard.",
+				"zh": "彈出一個顯示一段字串的視窗，並提供一個按鈕將字串複製到剪貼簿。"
+			},
+			"allpaths": {
+				"en": [
+					[
+						"Dialog"
+					]
+				],
+				"zh": [
+					[
+						"彈出視窗"
+					]
+				]
+			},
+			"properties": [
+				{
+					"key": "dialogId",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "ID of the dialog instance",
+						"zh": "彈出視窗的ID"
+					},
+					"propertyOrder": 0
+				},
+				{
+					"key": "title",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "Title",
+						"zh": "標題"
+					}
+				},
+				{
+					"key": "message",
+					"type": "string",
+					"format": "textarea",
+					"label": {
+						"en": "Message",
+						"zh": "訊息內容"
+					}
+				},
+				{
+					"key": "messageType",
+					"type": "string",
+					"label": {
+						"en": "The format of the Message.",
+						"zh": "訊息內容的格式"
+					},
+					"enum": [
+						"text",
+						"html",
+						"markdown"
+					],
+					"enumTitles": {
+						"en": [
+							"Plain Text",
+							"HTML",
+							"Markdown"
+						],
+						"zh": [
+							"純文字",
+							"HTML",
+							"Markdown"
+						]
+					}
+				},
+				{
+					"key": "msgImage",
+					"type": "object",
+					"format": "grid",
+					"label": {
+						"en": "Message Image",
+						"zh": "訊息圖案"
+					}
+				},
+				{
+					"key": "msgImageAlias",
+					"type": "string",
+					"label": {
+						"en": "Image Alias",
+						"zh": "圖案資源"
+					},
+					"parent": "msgImage",
+					"enum": [
+						"",
+						"resources<image>"
+					]
+				},
+				{
+					"key": "msgImageSide",
+					"type": "string",
+					"label": {
+						"en": "Image Position",
+						"zh": "圖案位置"
+					},
+					"parent": "msgImage",
+					"enum": [
+						"left",
+						"right",
+						"top"
+					],
+					"enumTitles": {
+						"en": [
+							"Left",
+							"Right",
+							"Top"
+						],
+						"zh": [
+							"左邊",
+							"右邊",
+							"上面"
+						]
+					}
+				},
+				{
+					"key": "controls",
+					"type": "object",
+					"format": "grid",
+					"label": {
+						"en": "Control Bar",
+						"zh": "控制欄"
+					}
+				},
+				{
+					"key": "buttonIconSide",
+					"type": "string",
+					"label": {
+						"en": "The position of the button icon",
+						"zh": "按鈕圖示的位置"
+					},
+					"gridColumns": 3,
+					"parent": "controls",
+					"enum": [
+						"right",
+						"left"
+					],
+					"enumTitles": {
+						"en": [
+							"Right",
+							"Left"
+						],
+						"zh": [
+							"右邊",
+							"左邊"
+						]
+					}
+				},
+				{
+					"key": "conBottom",
+					"type": "number",
+					"label": {
+						"en": "Bottom Margin",
+						"zh": "底部留白高度"
+					},
+					"default": {
+						"en": "8"
+					},
+					"gridColumns": 6,
+					"parent": "controls"
+				},
+				{
+					"key": "conBottomUnit",
+					"type": "string",
+					"label": {
+						"en": "Unit",
+						"zh": "單位"
+					},
+					"default": {
+						"en": "px"
+					},
+					"gridColumns": 3,
+					"parent": "controls",
+					"enum": [
+						"px",
+						"%"
+					]
+				},
+				{
+					"key": "confirmValue",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "The string value sent of confirm event.",
+						"zh": "確認時的回傳字串"
+					},
+					"gridColumns": 4,
+					"parent": "controls"
+				},
+				{
+					"key": "confirmLabel",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "The label of the confirm button",
+						"zh": "確認按鈕文字"
+					},
+					"default": {
+						"en": "Confirm",
+						"zh": "確定"
+					},
+					"gridColumns": 4,
+					"parent": "controls"
+				},
+				{
+					"key": "confirmIcon",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "The icon of the confirm button",
+						"zh": "確認按鈕圖示"
+					},
+					"default": {
+						"en": "check"
+					},
+					"gridColumns": 4,
+					"parent": "controls"
+				},
+				{
+					"key": "hideCancelButton",
+					"type": "boolean",
+					"label": {
+						"en": "Hide cancel button",
+						"zh": "隱藏取消按鈕"
+					},
+					"gridColumns": 4,
+					"parent": "controls"
+				},
+				{
+					"key": "cancelLabel",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "The label of the cancel button",
+						"zh": "取消按鈕文字"
+					},
+					"default": {
+						"en": "Cancel",
+						"zh": "取消"
+					},
+					"gridColumns": 4,
+					"visible": "{hideCancelButton} == false",
+					"parent": "controls"
+				},
+				{
+					"key": "cancelIcon",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "The icon of the cancel button",
+						"zh": "取消按鈕圖示"
+					},
+					"default": {
+						"en": "close"
+					},
+					"gridColumns": 4,
+					"visible": "{hideCancelButton} == false",
+					"parent": "controls"
+				},
+				{
+					"key": "options",
+					"type": "object",
+					"format": "grid",
+					"label": {
+						"en": "Options",
+						"zh": "進階選項"
+					},
+					"collapsed": 1
+				},
+				{
+					"key": "maxWidth",
+					"type": "string",
+					"label": {
+						"en": "Maxinum Width of the dialog",
+						"zh": "視窗的最大寬度"
+					},
+					"gridColumns": 12,
+					"parent": "options",
+					"enum": [
+						"",
+						"xs",
+						"sm",
+						"md"
+					],
+					"enumTitles": {
+						"en": [
+							"Unset",
+							"XSmall",
+							"Small",
+							"Medium"
+						],
+						"zh": [
+							"不設定",
+							"極小",
+							"小",
+							"中"
+						]
+					}
+				},
+				{
+					"key": "closeButton",
+					"type": "boolean",
+					"label": {
+						"en": "Show the Close button on the top-right corner.",
+						"zh": "是否顯示右上角的關閉按鈕"
+					},
+					"gridColumns": 6,
+					"parent": "options"
+				},
+				{
+					"key": "fullWidth",
+					"type": "boolean",
+					"label": {
+						"en": "Stretches the dialog to maxWidth",
+						"zh": "將視窗展開至最大寬度"
+					},
+					"gridColumns": 6,
+					"parent": "options"
+				},
+				{
+					"key": "fullScreen",
+					"type": "boolean",
+					"label": {
+						"en": "Make this popup fullscreen.",
+						"zh": "調整為全畫面視窗"
+					},
+					"gridColumns": 6,
+					"parent": "options"
+				},
+				{
+					"key": "preventAccClose",
+					"type": "boolean",
+					"label": {
+						"en": "Prevent window closed by click outside or Esc key.",
+						"zh": "停用按視窗外區域或Esc按鈕關閉視窗的功能"
+					},
+					"gridColumns": 6,
+					"parent": "options"
+				},
+				{
+					"key": "backgroundImage",
+					"type": "string",
+					"label": {
+						"en": "Background Image",
+						"zh": "背景圖案"
+					},
+					"gridColumns": 6,
+					"parent": "options",
+					"enum": [
+						"",
+						"resources<image>"
+					]
+				},
+				{
+					"key": "backgroundRepeat",
+					"type": "string",
+					"label": {
+						"en": "Bg Repeat",
+						"zh": "背景重覆"
+					},
+					"default": {
+						"en": "cover"
+					},
+					"gridColumns": 6,
+					"visible": "{backgroundImage}",
+					"parent": "options",
+					"enum": [
+						"cover",
+						"round",
+						"space",
+						"no-repeat"
+					],
+					"enumTitles": {
+						"en": [
+							"Cover",
+							"Round",
+							"Space",
+							"No Repeat"
+						],
+						"zh": [
+							"覆蓋",
+							"重覆(伸縮)",
+							"重覆(間隔)",
+							"原尺寸"
+						]
+					}
+				},
+				{
+					"key": "transition",
+					"type": "object",
+					"format": "grid",
+					"label": {
+						"en": "Transition",
+						"zh": "進出動畫"
+					},
+					"gridColumns": 12,
+					"parent": "options"
+				},
+				{
+					"key": "tranClaz",
+					"type": "string",
+					"label": {
+						"en": "Animation",
+						"zh": "動畫"
+					},
+					"parent": "transition",
+					"enum": [
+						"slide",
+						"zoom",
+						"fade",
+						"grow"
+					],
+					"enumTitles": {
+						"en": [
+							"Slide",
+							"Zoom",
+							"Fade",
+							"Grow"
+						],
+						"zh": [
+							"滑動",
+							"縮放",
+							"淡入"
+						]
+					}
+				},
+				{
+					"key": "tranDuration",
+					"type": "number",
+					"format": "string",
+					"label": {
+						"en": "Animation",
+						"zh": "動畫"
+					},
+					"unit": {
+						"en": "millisecond",
+						"zh": "毫秒"
+					},
+					"default": {
+						"en": "250"
+					},
+					"parent": "transition"
+				},
+				{
+					"key": "tranDirection",
+					"type": "string",
+					"label": {
+						"en": "Direction",
+						"zh": "方向"
+					},
+					"default": {
+						"en": "up"
+					},
+					"visible": "\"{tranClaz}\" == \"slide\"",
+					"parent": "transition",
+					"enum": [
+						"up",
+						"down"
+					],
+					"enumTitles": {
+						"en": [
+							"UP",
+							"DOWN"
+						],
+						"zh": [
+							"往上",
+							"往下"
+						]
+					}
+				},
+				{
+					"key": "valueLabel",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "The label of the display string",
+						"zh": "字串的提示標題"
+					}
+				},
+				{
+					"key": "value",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "The string to show",
+						"zh": "顯示的字串"
+					}
+				},
+				{
+					"key": "disabled",
+					"type": "boolean",
+					"label": {
+						"en": "Disable",
+						"zh": "停用"
+					},
+					"default": {
+						"en": "false"
+					}
+				}
+			]
+		}
+	},
+	"check": {},
+	"trigger": {
+		"DialogConfirm": {
+			"project": "ReactMaterial",
+			"source": {
+				"path": "triggers",
+				"filename": "DialogConfirm.trigger.ts"
+			},
+			"tostring": {},
+			"className": "DialogConfirmTrigger",
+			"timestamp": 1625501704725,
+			"label": {
+				"en": "Dialog Confirm",
+				"zh": "視窗確認"
+			},
+			"description": {
+				"en": "Triggered when user clicks confirm button in a dialog.",
+				"zh": "在玩家按下視窗中的確認按鈕時觸發。"
+			},
+			"allpaths": {
+				"en": [
+					[
+						"Dialog"
+					]
+				],
+				"zh": [
+					[
+						"彈出視窗"
+					]
+				]
+			},
+			"properties": [
+				{
+					"key": "dialogId",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "ID of the dialog",
+						"zh": "彈出視窗的ID"
+					},
+					"suggest": [
+						"actions<dialogId>"
+					]
+				},
+				{
+					"key": "supportMultiplayers",
+					"type": "boolean",
+					"label": {
+						"en": "Support Multiplayers",
+						"zh": "支援多人連線"
+					},
+					"description": {
+						"en": "If checked, anyone in the gameroom click the button will trigger this event.",
+						"zh": "若勾選，則遊戲室內任何一人按下按鈕都會觸發這個事件。"
+					}
+				},
+				{
+					"key": "closeDialogWhenTrigger",
+					"type": "boolean",
+					"label": {
+						"en": "Close dialog when triggered",
+						"zh": "觸發時關閉對話框"
+					},
+					"default": {
+						"en": "true"
+					},
+					"visible": "{supportMultiplayers}",
+					"indent": 1
+				},
+				{
+					"key": "playerCodeVarname",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "Local variable: player code",
+						"zh": "事件區域變數: 玩家代碼"
+					},
+					"default": {
+						"en": "player"
+					},
+					"description": {
+						"en": "The local variable name that stores the player code who confirms the dialog.",
+						"zh": "事件區域變數名，用來儲存確認的玩家代碼。"
+					}
+				},
+				{
+					"key": "value",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "Value to compare",
+						"zh": "比較字串"
+					},
+					"description": {
+						"en": "This trigger only triggers when the value matches the value from the confirmed dialog.\n- use * to \n- wrap string with / to use Regular Expression.",
+						"zh": "事件只會在視窗回傳的值符合比較字串規則時觸發。\n- 使用 * 取代任何字串\n- 在字串前後加上 / 以使用正規表達式(Regular Expression)"
+					}
+				},
+				{
+					"key": "evtLocal",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "Local variable: string returned",
+						"zh": "事件區域變數: 回傳字串"
+					},
+					"description": {
+						"en": "The local variable name that stores the string returned from the confirm dialog.",
+						"zh": "事件區域變數名，用來儲存視窗確認所回傳的字串。"
+					}
+				},
+				{
+					"key": "delayTrigger",
+					"type": "boolean",
+					"label": {
+						"en": "Delay Trigger",
+						"zh": "延遲觸發"
+					},
+					"description": {
+						"en": "When trigger is about the happen, delay the trigger of checks and actions.",
+						"zh": "當觸發條件符合時，是否延後一段時間再進行觸發檢查和動作。"
+					}
+				},
+				{
+					"key": "delayTime",
+					"type": "number",
+					"label": {
+						"en": "Delay Time",
+						"zh": "延遲觸發時間"
+					},
+					"unit": {
+						"en": "millisecond",
+						"zh": "毫秒"
+					},
+					"default": {
+						"en": "1000"
+					},
+					"visible": "{delayTrigger}",
+					"indent": 1
+				},
+				{
+					"key": "disableAfterTriggered",
+					"type": "boolean",
+					"label": {
+						"en": "Disable after triggered",
+						"zh": "觸發後停用"
+					},
+					"description": {
+						"en": "If true, this TRIGGER will be disabled after this.trigger() is called.\nThis is useful when the TRIGGER is only meanningful for the first trigger, like detecting when another event is triggered, or detecting when a hero dies.",
+						"zh": "若為真，則這個觸發將在this.trigger()被呼叫後停用。\n這個設定在只有第一次觸發時有意義的觸發上特別有用，比如偵測其他事件被觸發的時候，或偵測遊戲中某角色死亡的時候。"
+					}
+				},
+				{
+					"key": "disabled",
+					"type": "boolean",
+					"label": {
+						"en": "Disable",
+						"zh": "停用"
+					},
+					"default": {
+						"en": "false"
+					}
+				}
+			]
+		},
+		"DialogClose": {
+			"project": "ReactMaterial",
+			"source": {
+				"path": "triggers",
+				"filename": "DialogClose.trigger.ts"
+			},
+			"tostring": {},
+			"className": "DialogCloseTrigger",
+			"timestamp": 1625501704725,
+			"label": {
+				"en": "Dialog Close",
+				"zh": "視窗關閉"
+			},
+			"description": {
+				"en": "Triggered when a dialog is closed",
+				"zh": "在視窗關閉時時觸發。"
+			},
+			"allpaths": {
+				"en": [
+					[
+						"Dialog"
+					]
+				],
+				"zh": [
+					[
+						"彈出視窗"
+					]
+				]
+			},
+			"properties": [
+				{
+					"key": "dialogId",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "ID of the dialog",
+						"zh": "彈出視窗的ID"
+					},
+					"suggest": [
+						"actions<dialogId>"
+					]
+				},
+				{
+					"key": "supportMultiplayers",
+					"type": "boolean",
+					"label": {
+						"en": "Support Multiplayers",
+						"zh": "支援多人連線"
+					},
+					"description": {
+						"en": "If checked, anyone in the gameroom click the button will trigger this event.",
+						"zh": "若勾選，則遊戲室內任何一人按下按鈕都會觸發這個事件。"
+					}
+				},
+				{
+					"key": "closeDialogWhenTrigger",
+					"type": "boolean",
+					"label": {
+						"en": "Close dialog when triggered",
+						"zh": "觸發時關閉對話框"
+					},
+					"default": {
+						"en": "true"
+					},
+					"visible": "{supportMultiplayers}",
+					"indent": 1
+				},
+				{
+					"key": "playerCodeVarname",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "Local variable: player code",
+						"zh": "事件區域變數: 玩家代碼"
+					},
+					"default": {
+						"en": "player"
+					},
+					"description": {
+						"en": "The local variable name that stores the player code who confirms the dialog.",
+						"zh": "事件區域變數名，用來儲存確認的玩家代碼。"
+					}
+				},
+				{
+					"key": "confirmState",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"en": "Confirm State",
+						"zh": "關閉方式"
+					},
+					"default": {
+						"en": ""
+					},
+					"enum": [
+						"confirm",
+						"cancel",
+						""
+					],
+					"enumTitles": {
+						"en": [
+							"Confirm Button",
+							"Cancel Button",
+							"Doesn't Matter"
+						],
+						"zh": [
+							"確認按鈕",
+							"取消按鈕",
+							"都可以"
+						]
+					}
+				},
+				{
+					"key": "delayTrigger",
+					"type": "boolean",
+					"label": {
+						"en": "Delay Trigger",
+						"zh": "延遲觸發"
+					},
+					"description": {
+						"en": "When trigger is about the happen, delay the trigger of checks and actions.",
+						"zh": "當觸發條件符合時，是否延後一段時間再進行觸發檢查和動作。"
+					}
+				},
+				{
+					"key": "delayTime",
+					"type": "number",
+					"label": {
+						"en": "Delay Time",
+						"zh": "延遲觸發時間"
+					},
+					"unit": {
+						"en": "millisecond",
+						"zh": "毫秒"
+					},
+					"default": {
+						"en": "1000"
+					},
+					"visible": "{delayTrigger}",
+					"indent": 1
+				},
+				{
+					"key": "disableAfterTriggered",
+					"type": "boolean",
+					"label": {
+						"en": "Disable after triggered",
+						"zh": "觸發後停用"
+					},
+					"description": {
+						"en": "If true, this TRIGGER will be disabled after this.trigger() is called.\nThis is useful when the TRIGGER is only meanningful for the first trigger, like detecting when another event is triggered, or detecting when a hero dies.",
+						"zh": "若為真，則這個觸發將在this.trigger()被呼叫後停用。\n這個設定在只有第一次觸發時有意義的觸發上特別有用，比如偵測其他事件被觸發的時候，或偵測遊戲中某角色死亡的時候。"
+					}
+				},
+				{
+					"key": "disabled",
+					"type": "boolean",
+					"label": {
+						"en": "Disable",
+						"zh": "停用"
+					},
+					"default": {
+						"en": "false"
+					}
+				}
+			]
+		}
+	},
+	"definition": {
+		"SelectOption": {
+			"project": "ReactMaterial",
+			"source": {
+				"path": "definitions",
+				"filename": "SelectOption.definition.ts"
+			},
+			"tostring": {},
+			"className": "SelectOptionDef",
+			"timestamp": 1625501704725,
+			"label": {
+				"en": "Select Option",
+				"zh": "選項"
+			},
+			"description": {},
+			"allpaths": {},
+			"properties": [
+				{
+					"key": "value",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"zh": "選項值"
+					},
+					"description": {
+						"en": "The value of the option",
+						"zh": "選項的值"
+					},
+					"gridColumns": 4
+				},
+				{
+					"key": "label",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"zh": "選項標題"
+					},
+					"description": {
+						"en": "The label of the option",
+						"zh": "選項標題"
+					},
+					"gridColumns": 4
+				},
+				{
+					"key": "icon",
+					"type": "string",
+					"format": "string",
+					"label": {
+						"zh": "選項圖示"
+					},
+					"description": {
+						"en": "The icon of the option",
+						"zh": "選項圖示"
+					},
+					"gridColumns": 4
+				}
+			],
+			"format": "grid"
+		}
+	}
+}

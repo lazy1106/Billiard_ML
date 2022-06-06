@@ -1,0 +1,26 @@
+{
+    "config": {
+        "NSCameraUsageDescription": "need camera access to take pictures",
+        "NSPhotoLibraryUsageDescription": "need photo library access to get pictures from there",
+        "NSLocationWhenInUseUsageDescription": "need location access to find things nearby",
+        "NSPhotoLibraryAddUsageDescription": "need photo library access to save pictures there",
+        "UIStatusBarHidden": true,
+        "UIViewControllerBasedStatusBarAppearance": false,
+        "//end": ""
+    },
+    "preferences": {
+        "//AndroidPersistentFileLocation": "// options: Internal or Compatibility",
+        "AndroidPersistentFileLocation": "Compatibility",
+        "//iosPersistentFileLocation": "// options: Library or Compatibility",
+        "iosPersistentFileLocation": "Compatibility",
+        "StatusBarOverlaysWebView": "true",
+        "StatusBarBackgroundColor": null,
+        "//StatusBarStyle": "// options: default, lightcontent, blacktranslucent, blackopaque",
+        "StatusBarStyle": "default",
+        "StatusBarDefaultScrollToTop": "false",
+        "//Orientation": "// options: default, landscape, portrait",
+        "Orientation": "default",
+        "//end": ""
+    },
+    "plugins": []
+}

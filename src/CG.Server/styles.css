@@ -1,0 +1,163 @@
+.spacer {
+    flex: 1;
+}
+/* highscores */
+.highScoreDialog .dialog-title-root {
+    padding-bottom: 0;
+}
+.highScoreDialog .MuiTableCell-head {
+    line-height: 1.1em;
+}
+.highScoreDialog .hscoreBoard .MuiTableCell-sizeSmall {
+    padding: 6px 12px;
+}
+.highScoreDialog .hscoreBoard .MuiTableCell-sizeSmall:last-child {
+    padding-right: 24px;
+}
+.hscoreBoard .userInfoCell {
+    display: flex;
+    align-items: center;
+}
+.hscoreBoard .userInfoCell .nickname {
+    max-width: 125px;
+    overflow: hidden;
+    line-height: 1.1em;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+}
+.hscoreBoard .userInfoCell > img {
+    width: 24px;
+    height: 24px;
+    margin-right: 5px;
+}
+.hscoreBoard .userInfoCell > img {
+    width: 28px;
+    height: 28px;
+    margin-right: 5px;
+    border: 1px solid #777;
+    border-radius: 3px;
+    padding: 2px;
+}
+.hscoreBoard .timeRangeSelect {
+    margin-left: 20px;
+}
+
+.submitScoreDialogRoot .dialog-title-root {
+    text-align: center;
+    padding: 20px 20px 10px;
+}
+.submitScoreDialogRoot .dialog-title-root > * {
+    justify-content: center;
+}
+
+.submitScoreDialog {
+    text-align: center;
+    padding: 10px;
+}
+.submitScoreDialog > div {
+    padding: 0 !important;
+    justify-content: center;
+}
+.submitScoreDialog .loadingBox {
+    margin-bottom: 10px;
+}
+.submitScoreDialog .submitScoreDialogMessage {
+    padding-bottom: 5px !important;
+}
+.submitScoreDialog .submitScoreDialogActions {
+    margin: 10px 0 2px;
+}
+
+.submitScoreMessage {
+    line-height: 1.5em;
+}
+.submitScoreStatus {
+    font-size: smaller;
+    margin-top: 8px;
+    color: #999;
+}
+.submitScoreStatus.submitted {
+    color: green;
+}
+.submitScoreStatus.error {
+    color: red;
+}
+
+.submitScoreSnackbarRoot {
+    align-items: flex-end !important;
+    justify-content: flex-end !important;
+    pointer-events: none;
+}
+.submitScoreSnackbarRoot > div:first-child {
+    display: none;
+}
+.submitScoreSnackbarRoot .submitScorePaper {
+    margin: 20px;
+    background: rgba(255,255,255,0.8);
+}
+.submitScoreSnackbarRoot .submitScoreDialog {
+    padding: 8px 16px 3px;
+}
+.submitScoreSnackbarRoot .submitScoreStatus {
+    margin-top: 0;
+}
+
+/* badge */
+.awardBadgeDialog .dialog-title-root {
+    padding: 20px 36px;
+}
+.awardBadgeDialog .dialog-title-root > *, .listBadgeDialog .dialog-title-root > * {
+    justify-content: center;
+    font-size: 1.4rem !important;
+    text-shadow: 0 0 10px red, 0 0 10px orange;
+    color: white;
+    margin-bottom: 6px;
+}
+
+.awardBadgeDialogPaper, .listBadgeDialogPaper {
+    border-radius: 10px !important;
+    padding: 5px 0;
+    background-color: rgba(255,255,200,0.8) !important;
+    box-shadow: 0 0 30px orange, 0 0 20px orange !important;
+}
+.awardBadgeDialogMsg, .listBadgeDialogMsg {
+    text-shadow: 0 0 6px white;
+}
+.awardBadgeDialogPaper .dialog-title-root button, .listBadgeDialogPaper .dialog-title-root button {
+    color: #a93;
+}
+
+.awardBadgeDialog.autoClose {
+    align-items: flex-start;
+    pointer-events: none;
+}
+.awardBadgeDialog.autoClose > div:first-child, .awardBadgeDialog.autoClose .awardBadgeDialogMsg, .awardBadgeDialog.autoClose .dialog-title-root {
+    display: none;
+}
+.awardBadgeDialog.autoClose img {
+    max-width: 96px;
+    max-height: 96px;
+    margin: 0;
+    pointer-events: all;
+}
+.awardBadgeDialog.autoClose .dialog-content-root {
+    padding: 0 10px;
+}
+/* user badges */
+.listBadgeDialog .dialog-title-root {
+    padding: 20px 36px 15px;
+}
+.listBadgeDialogMsg {
+    text-align: center;
+}
+.badgeList {
+    max-width: 720px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.badgeListItem img {
+    max-width: 64px;
+    max-height: 64px;
+    margin: 3px;
+}

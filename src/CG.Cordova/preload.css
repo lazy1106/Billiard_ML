@@ -1,0 +1,7 @@
+body.preload {
+    background-position: center;
+    background-size: cover;
+}
+body.preload .pace {
+    display: none;
+}
